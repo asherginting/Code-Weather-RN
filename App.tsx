@@ -6,6 +6,8 @@ import AppNavigation from './src/navigations/AppNavigation';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {PermissionsAndroid, Platform} from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
+import {Provider} from 'react-redux';
+import store from './src/redux/configureStore';
 
 const App = () => {
   useEffect(() => {
@@ -53,11 +55,13 @@ const App = () => {
 
   return (
     <SafeAreaProvider>
-      <NavigationContainer>
-        <NativeBaseProvider>
-          <AppNavigation />
-        </NativeBaseProvider>
-      </NavigationContainer>
+      <Provider store={store}>
+        <NavigationContainer>
+          <NativeBaseProvider>
+            <AppNavigation />
+          </NativeBaseProvider>
+        </NavigationContainer>
+      </Provider>
     </SafeAreaProvider>
   );
 };
