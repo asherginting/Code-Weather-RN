@@ -8,8 +8,11 @@ import {
   TouchableOpacity,
   StatusBar,
 } from 'react-native';
+import {useSelector} from 'react-redux';
 
-const Home = ({navigation}) => {
+const Home = ({navigation}: {navigation: any}) => {
+  const location = useSelector((state: any) => state.weather.location);
+
   return (
     <SafeAreaView style={styles.safeView}>
       <StatusBar backgroundColor="white" barStyle="dark-content" />
@@ -20,7 +23,10 @@ const Home = ({navigation}) => {
             style={styles.icon}
           />
         </TouchableOpacity>
-        <Text style={styles.txtLocation}>Location</Text>
+        <Text
+          style={
+            styles.txtLocation
+          }>{`Location: ${location?.latitude}, ${location?.longitude}`}</Text>
         <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
           <Image
             source={require('../assets/icons/filter.png')}
