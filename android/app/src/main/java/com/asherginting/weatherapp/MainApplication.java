@@ -1,4 +1,4 @@
-package com.weatherapp;
+package com.asherginting.weatherapp;
 
 import android.app.Application;
 import com.facebook.react.PackageList;
